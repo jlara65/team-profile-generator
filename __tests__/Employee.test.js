@@ -1,6 +1,6 @@
 const Employee = require('../lib/Employee');
 
-// self-note employee has 3 arguments in the constructor (name, id, email) and 4 Properties getName(),getID(),getEmail(), getRole()
+// self-note employee has 3 properties in the constructor (name, id, email) and 4 methods getName(),getID(),getEmail(), getRole()
 
 test('add employee to object', () => {
     const employee = new Employee('Joseph the Great', 3725, 'JTG55@domain.com');
@@ -28,6 +28,8 @@ test("obtain employee's email", () => {
     expect(employee.getEmail()).toEqual(expect.any(String));
 });
 
-/* test("obtain employee's role", () => {
-    
-})*/
+test("return getRole() to employee", () => {
+    const employee = new Employee('Joseph the Great', 3725, 'JTG55@domain.com');
+
+    expect(employee.getRole()).toEqual('Employee');
+});
