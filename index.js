@@ -3,6 +3,7 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
+const generateHTML = require('./src/generateHTML');
 const teamArray = [];
 
 // add inquirer prompt questions here
@@ -181,11 +182,24 @@ const promptEmployee = () => {
         }
     })
 };
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log('You have successfully created your team profile! Please take a look at index.html to view your team profile page');
+        }
+    })
+};
 
 promptManager()
     .then(promptEmployee)
     .then(teamArray => {
-        return console.log(teamArray);
+        return generateHTML(teamArray);
+    })
+    .then(createHTML => {
+        return writeFile(createHTML);
     })
     .catch(err => {
         console.log(err);
