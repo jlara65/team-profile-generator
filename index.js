@@ -1,3 +1,4 @@
+// link to node modules, team profiles, generate page and create array for team
 const inquirer = require('inquirer');
 const fs = require('fs');
 const Manager = require('./lib/Manager');
@@ -6,8 +7,7 @@ const Engineer = require('./lib/Engineer');
 const generateHTML = require('./src/generateHTML');
 const teamArray = [];
 
-// add inquirer prompt questions here
-
+// prompt inquirer for manager
 const promptManager = () => {
     return inquirer.prompt ([
     {
@@ -74,6 +74,7 @@ const promptManager = () => {
     })
 };
 
+// prompt inquirer for adding employee
 const promptEmployee = () => {
     console.log(`
     ===================
@@ -161,6 +162,7 @@ const promptEmployee = () => {
             default: false
         }
     ])
+    // create data for employee types 
     .then(employeeData => {
         let { name, id, email, role, github, school, confirmAddEmployee } = employeeData;
         let employee;
@@ -182,6 +184,7 @@ const promptEmployee = () => {
         }
     })
 };
+// function to create a html with file system
 const writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
         if (err) {
@@ -193,6 +196,7 @@ const writeFile = data => {
     })
 };
 
+// initialize the functions to start
 promptManager()
     .then(promptEmployee)
     .then(teamArray => {

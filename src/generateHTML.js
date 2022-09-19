@@ -1,3 +1,4 @@
+// create an manager template
 const generateManager = function(manager) {
     return `
                  <div class="col-4 mt-4">
@@ -16,6 +17,7 @@ const generateManager = function(manager) {
     `
 }
 
+// create an engineer template
 const generateEngineer = function(engineer) {
     return `
                     <div class="col-4 mt-4">
@@ -27,13 +29,14 @@ const generateEngineer = function(engineer) {
                             <div class="card-body">
                                 <p>ID: ${engineer.id}</p>
                                 <p class="email">Email: <a href="mailto:${engineer.email}">${engineer.email}t</a></p>
-                                <p>GitHub: <a href="https://github.com/${engineer.github}"> ${engineer.github}</a></p>
+                                <p>GitHub: <a href="https://github.com/${engineer.github}" target="_blank"> ${engineer.github}</a></p>
                             </div>
                         </div>
                     </div>
     `
 }
 
+// create an intern template
 const generateIntern = (intern) => {
     return `
                 <div class="col-4 mt-4">
@@ -51,7 +54,7 @@ const generateIntern = (intern) => {
                 </div>
     `
 }
-
+// use data from prompt to push array data into create a page
 generateHTML = (data) => {
     pageArray = [];
 
@@ -84,6 +87,7 @@ generateHTML = (data) => {
     return generateTeam;
 }
 
+// generate html template page.
 const generateTeamPage = (employeeCards) => {
     return `
     <!DOCTYPE html>
@@ -119,4 +123,5 @@ const generateTeamPage = (employeeCards) => {
     `
 };
 
+// export to index
 module.exports = generateHTML;
